@@ -29,13 +29,16 @@ resource "azurerm_virtual_machine" "example" {
     admin_password = "Password1234!"
   }
   os_profile_linux_config {
-    disable_password_authentication = true
+    disable_password_authentication = false
+    /*
     ssh_keys {
-        key_data = file("~/.ssh/id_rsa.pub")
-        path     = "/home/testadmin/.ssh/authorized_keys"
+      key_data = file("~/.ssh/id_rsa.pub")
+      path     = "/home/testadmin/.ssh/authorized_keys"
     }
+    */
   }
-  
+  depends_on = [azurerm_network_interface.example]
+
   tags = {
     environment = "staging"
   }

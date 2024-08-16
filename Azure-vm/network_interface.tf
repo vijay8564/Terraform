@@ -1,7 +1,7 @@
 # pubic ip adding to nic
 
 resource "azurerm_public_ip" "example" {
-    name                = "example-pip"
+  name                = "example-pip"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   allocation_method   = "Static"
@@ -50,17 +50,18 @@ resource "azurerm_network_security_rule" "allow_http" {
 
 
 resource "azurerm_network_interface" "example" {
-    name = "vm-nic"
-    location = azurerm_resource_group.example.location
-    resource_group_name = azurerm_resource_group.example.name
+  name                = "vm-nic"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
 
-    ip_configuration {
+  ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.example.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.example.id
-    
-    
+
+
+
   }
 
 }
