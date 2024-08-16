@@ -1,12 +1,12 @@
 terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.116.0"
+  cloud {
+    organization = "vijay8564"
+
+    workspaces {
+      name = "Terraform"
     }
   }
 }
-
 provider "azurerm" {
   features = {}
 }
